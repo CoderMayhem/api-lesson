@@ -12,11 +12,12 @@ app.get("/", function(req,res){
     response.on("data", function(data){
       const weatherData = JSON.parse(data)
       const temp = weatherData.main.temp;
-      console.log(temp);
+      const description = weatherData.weather[0].description;
+      res.write("<p>The weather is currently " + description + "<p>");
+      res.write("<h1>The temperature in Banaras is " + temp + " deg Celcius.<h1>");
+      res.send();
     });
   });
-
-  res.send("I love Sakshi.");
 });
 
 
